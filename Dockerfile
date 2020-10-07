@@ -13,7 +13,10 @@ RUN apt-get update && apt-get upgrade -y                                        
     chmod +x /usr/local/bin/kops                                                                       && \
     chmod +x /usr/local/bin/kubectl                                                                    && \
     chown kops:kops /usr/local/bin/kops                                                                && \
-    chown kops:kops /usr/local/bin/kubectl
+    chown kops:kops /usr/local/bin/kubectl                                                             && \
+    mkdir -p /home/kops/.kube                                                                          && \
+    chmod ug+rw /home/kops/.kube                                                                       && \
+    chown kops:kops -R /home/kops/.kube
 
 USER kops
 
